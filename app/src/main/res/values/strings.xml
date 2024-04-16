@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GadgetGuru_Accessories</string>
+    <string name="Signup_Now">Not yet registered? SignUp Now</string>
+    <string name="LoginButton">Login</string>
+    <string name="LoginPassword">Password</string>
+    <string name="LoginUsername">Username</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
