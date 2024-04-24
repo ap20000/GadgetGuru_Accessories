@@ -4,68 +4,50 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gadgetguru_accessories.R;
-import com.example.gadgetguru_accessories.model.User;
-import com.example.gadgetguru_accessories.utilities.ApiService;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import com.example.gadgetguru_accessories.model.User;
+import com.example.gadgetguru_accessories.model.loginUser;
+import com.example.gadgetguru_accessories.utilities.ApiClient;
 
 public class LoginPage extends AppCompatActivity {
-    private EditText userNameEditText;
+    private EditText usernameEditText;
     private EditText passwordEditText;
     private Button loginButton;
-    private ApiService apiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
 
-        userNameEditText = findViewById(R.id.loginUsername);
+        usernameEditText = findViewById(R.id.loginUsername);
         passwordEditText = findViewById(R.id.loginPassword);
         loginButton = findViewById(R.id.loginButton);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost/api/loginGet.php/")
-                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
-                .build();
-
-        apiService = retrofit.create(ApiService.class);
-
         loginButton.setOnClickListener(v -> {
-            String username = userNameEditText.getText().toString().trim().toLowerCase();
+            String username = usernameEditText.getText().toString();
             String password = passwordEditText.getText().toString();
 
-            // Make network request to API
-            Call<User> call = apiService.getlogin(username, password);
-            call.enqueue(new Callback<User>() {
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    if (response.isSuccessful()) {
-                        User user = response.body();
-                        Log.d("Login", "User found: " + new Gson().toJson(user));
-                        // Perform login using user credentials
-                    } else {
-                        Log.d("Login", "User not found");
-                        // Handle case where user is not found
-                    }
-                }
+            Log.d("LoginPage", "Username: " + username);
+            Log.d("LoginPage", "Password: " + password);
 
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-                    Log.e("Login", "Error: " + t.getMessage());
-                    // Handle failure
-                }
-            });
+            // Validate input fields
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(LoginPage.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
+            } else {
+                // Call loginUser method with username, password, and context
+                loginUser user = new loginUser( username,  password);
+                ApiClient.loginUser(user, LoginPage.this);
+            }
         });
     }
+
+    private void loginUser(loginUser user) {
+        ApiClient.loginUser(user, this);
+    }
+
 }
