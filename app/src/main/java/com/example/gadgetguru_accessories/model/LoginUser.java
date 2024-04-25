@@ -2,7 +2,7 @@ package com.example.gadgetguru_accessories.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class loginUser {
+public class LoginUser {
 
 
 
@@ -12,7 +12,7 @@ public class loginUser {
     @SerializedName("password")
     private String password;
 
-    public loginUser(String userName, String password) {
+    public LoginUser(String userName, String password) {
 
         this.userName = userName;
         this.password = password;

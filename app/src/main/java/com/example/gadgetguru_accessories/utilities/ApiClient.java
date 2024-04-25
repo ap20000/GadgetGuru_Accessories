@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.gadgetguru_accessories.model.LoginUser;
 import com.example.gadgetguru_accessories.model.User;
-import com.example.gadgetguru_accessories.model.loginUser;
 
 import com.google.gson.GsonBuilder;
 
@@ -19,7 +19,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    private static final String BASE_URL = "http://192.168.1.142/api/";
+    private static final String BASE_URL = "http://192.168.137.210/api/";
+
+//    private static final String BASE_URL = "http://10.0.2.2/api/";
     private static Retrofit retrofit;
 
     // Create the Retrofit instance
@@ -42,10 +44,10 @@ public class ApiClient {
 
 
         // Call the registerUser method in ApiService and pass the user object
-        apiService.registerUser(user).enqueue(new Callback() {
+        apiService.registerUser(user).enqueue(new Callback<Object>() {
 
             @Override
-            public void onResponse(Call call, Response response) {
+            public void onResponse(Call<Object> call, Response<Object> response) {
 
                 if (response.isSuccessful()) {
                     Toast.makeText(context, "User registered successfully", Toast.LENGTH_SHORT).show();
@@ -60,7 +62,7 @@ public class ApiClient {
             }
 
             @Override
-            public void onFailure(Call call, Throwable t) {
+            public void onFailure(Call<Object> call, Throwable t) {
                 Log.d("issue", t.getMessage());
                 String errorMessage;
                 if (t instanceof IOException) {
@@ -76,34 +78,43 @@ public class ApiClient {
     }
 
 
-    public static void loginUser(loginUser user, Context context) {
+    public static void loginUser(String username, String password, Context context) {
         // Get the ApiService instance
         ApiService apiService = createApiService();
 
-        // Call the loginUser method in ApiService and pass the user object
-        apiService.loginUser(user).enqueue(new Callback() {
+        // Call the loginUser method in ApiService and pass the username and password as query parameters
+
+        LoginUser user = new LoginUser(username, password);
+        apiService.loginUser(user).enqueue(new Callback<Object>() {
             @Override
-            public void onResponse(Call call, Response response) {
+            public void onResponse(Call<Object> call, Response<Object> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(context, "User registered successfully", Toast.LENGTH_SHORT).show();
-                    Log.d("ApiClient", "User registration successful");
-                    // Optionally, you can navigate to another activity upon successful registration
-                    // startActivity(new Intent(context, MainActivity.class));
+                    // Show a successful login message
+                    Toast.makeText(context, "User logged in successfully", Toast.LENGTH_SHORT).show();
+                    Log.d("ApiClient", "User login successful");
                 } else {
-                    // Display error message to the user
+                    // Show an error message
                     Toast.makeText(context, "Failed to login user. Please try again later.", Toast.LENGTH_SHORT).show();
-                    Log.d("ApiClient", "Failed to  user. Response code: " + response.code());
+                    Log.d("ApiClient", "Failed to login user. Response code: " + response.code());
                 }
             }
 
             @Override
-            public void onFailure(Call call, Throwable t) {
+            public void onFailure(Call<Object> call, Throwable t) {
                 // Login failed due to network error or other issues
-                Toast.makeText(context, "Failed to login. Please try again later.", Toast.LENGTH_SHORT).show();
-                Log.e("LoginPage", "Login failed: " + t.getMessage());
+                String errorMessage;
+                if (t instanceof IOException) {
+                    errorMessage = "Network error. Please check your internet connection.";
+                } else {
+                    errorMessage = "Failed to login user. Error: " + t.getMessage();
+                }
+                // Display error message to the user
+                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+                Log.e("ApiClient", "Login failed: " + errorMessage);
             }
         });
     }
+
 
 
 }

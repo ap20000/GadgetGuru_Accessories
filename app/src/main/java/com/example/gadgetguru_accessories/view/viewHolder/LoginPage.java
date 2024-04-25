@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.gadgetguru_accessories.R;
 
 import com.example.gadgetguru_accessories.model.User;
-import com.example.gadgetguru_accessories.model.loginUser;
+import com.example.gadgetguru_accessories.model.LoginUser;
 import com.example.gadgetguru_accessories.utilities.ApiClient;
 
 public class LoginPage extends AppCompatActivity {
@@ -40,14 +40,14 @@ public class LoginPage extends AppCompatActivity {
                 Toast.makeText(LoginPage.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
             } else {
                 // Call loginUser method with username, password, and context
-                loginUser user = new loginUser( username,  password);
-                ApiClient.loginUser(user, LoginPage.this);
+                ApiClient.loginUser(username, password, LoginPage.this);
             }
         });
+
     }
 
-    private void loginUser(loginUser user) {
-        ApiClient.loginUser(user, this);
-    }
+//    private void loginUser(loginUser user) {
+//        ApiClient.loginUser( this);
+//    }
 
 }
