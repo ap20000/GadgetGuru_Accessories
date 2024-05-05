@@ -67,25 +67,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="347dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/search_bg"
-                android:drawableLeft="@drawable/ic_search_black_24dp"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:fontFamily="sans-serif-black"
-                android:hint="Search"
-                android:inputType="textPersonName"
-                android:paddingStart="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,175 +110,32 @@
                                 android:padding="16dp">
 
                                 <ImageView
+                                    android:id="@+id/image"
                                     android:layout_width="match_parent"
                                     android:layout_height="120dp"
                                     android:scaleType="fitCenter"
-                                    app:srcCompat="@drawable/top_background1" />
+                                     />
 
                                 <TextView
+                                    android:id="@+id/Title"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="aa"
+
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
 
                                 <TextView
+                                    android:id="@+id/price"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="a"
+
                                     android:textSize="18sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
                         </ScrollView>
                     </com.google.android.material.card.MaterialCardView>
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/card2"
-                        android:layout_width="200dp"
-                        android:layout_height="237dp"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="50dp">
 
-                        <ScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="16dp">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="120dp"
-                                    android:scaleType="fitCenter"
-                                    app:srcCompat="@drawable/top_background1" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="a"
-                                    android:textSize="20sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="a"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </ScrollView>
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <!-- Repeat the above card view for the other two items -->
-                </LinearLayout>
-            </HorizontalScrollView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="25dp"
-                android:paddingEnd="20dp"
-                android:paddingTop="20dp"
-                android:text="Top Category"
-                android:textAlignment="viewStart"
-                android:textAppearance="?android:textAppearanceLarge"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="20dp">
-
-                    <!-- Repeat the following 3 times for each item -->
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/card1"
-                        android:layout_width="200dp"
-                        android:layout_height="237dp"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="50dp">
-
-                        <ScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="16dp">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="120dp"
-                                    android:scaleType="fitCenter"
-                                    app:srcCompat="@drawable/top_background1" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="a"
-                                    android:textSize="20sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="a"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </ScrollView>
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/card5"
-                        android:layout_width="200dp"
-                        android:layout_height="237dp"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="50dp">
-
-                        <ScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="16dp">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="120dp"
-                                    android:scaleType="fitCenter"
-                                    app:srcCompat="@drawable/top_background1" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="a"
-                                    android:textSize="20sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="a"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </ScrollView>
-                    </com.google.android.material.card.MaterialCardView>
 
                     <!-- Repeat the above card view for the other two items -->
                 </LinearLayout>
@@ -305,97 +143,11 @@
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <!-- Repeat the following 3 times for each item -->
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/card7"
-                        android:layout_width="200dp"
-                        android:layout_height="237dp"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="50dp">
-
-                        <ScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="16dp">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="120dp"
-                                    android:scaleType="fitCenter"
-                                    app:srcCompat="@drawable/top_background1" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="a"
-                                    android:textSize="20sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="a"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </ScrollView>
-                    </com.google.android.material.card.MaterialCardView>
-
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/card9"
-                        android:layout_width="200dp"
-                        android:layout_height="237dp"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="50dp">
-
-                        <ScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="16dp">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="120dp"
-                                    android:scaleType="fitCenter"
-                                    app:srcCompat="@drawable/top_background1" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="a"
-                                    android:textSize="20sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="a"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </ScrollView>
-                    </com.google.android.material.card.MaterialCardView>
-                    <!-- Repeat the above card view for the other two items -->
-                </LinearLayout>
-            </HorizontalScrollView>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </ScrollView>
 

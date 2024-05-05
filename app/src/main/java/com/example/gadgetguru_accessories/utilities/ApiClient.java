@@ -4,12 +4,17 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.gadgetguru_accessories.model.LoginUser;
+import com.example.gadgetguru_accessories.model.Product;
 import com.example.gadgetguru_accessories.model.User;
 
-import com.google.gson.GsonBuilder;
+import com.example.gadgetguru_accessories.view.adapter.PostAdapter;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,10 +24,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-//    private static final String BASE_URL = "http://192.168.137.210/api/";
+//    private static final String BASE_URL = "http://192.168.1.142/api/";
 
-    private static final String BASE_URL = "http://100.64.222.6/api/";
-//    private static final String BASE_URL = "http://localhost/api/";
+    private static final String BASE_URL = "http://100.64.215.72/api/";
+//    private static final String BASE_URL = "http://100.64.201.80/api/";
 
     private static Retrofit retrofit;
 
@@ -33,6 +38,9 @@ public class ApiClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
+    public ApiService apiService = retrofit.create(ApiService.class);
+
+    private ArrayList<Product> products = new ArrayList<>();
 
     // Create ApiService instance
     public static ApiService createApiService() {
@@ -120,6 +128,76 @@ public class ApiClient {
                 // Display error message to the user
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
                 Log.e("ApiClient", "Login failed: " + errorMessage);
+            }
+        });
+    }
+
+//    public static void getProducts(Context context) {
+//        // Get the ApiService instance
+//        ApiService apiService = createApiService();
+//
+//        // Call the getProducts method in ApiService
+//        apiService.getProducts().enqueue(new Callback<List<Product>>() {
+//            @Override
+//            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+//                if (response.isSuccessful()) {
+//                    List<Product> products = response.body();
+//                    // Display products in RecyclerView
+//                    // Assuming you have a method to set up RecyclerView and adapter
+//                    // For example, you can create a method in your activity or fragment
+//                    // and call it from here passing the products list
+//                    // setupRecyclerView(products);
+//                } else {
+//                    // Handle error
+//                    Log.d("ApiClient", "Failed to get products. Response code: " + response.code());
+//                    Toast.makeText(context, "Failed to get products. Please try again later.", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Product>> call, Throwable t) {
+//                // Handle network failure
+//                String errorMessage;
+//                if (t instanceof IOException) {
+//                    errorMessage = "Network error. Please check your internet connection.";
+//                } else {
+//                    errorMessage = "Failed to get products. Error: " + t.getMessage();
+//                }
+//                // Display error message to the user
+//                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+//                Log.e("ApiClient", "Failed to get products: " + errorMessage);
+//            }
+//        });
+//    }
+
+    public void getProducts(PostAdapter adapter) {
+        Call<List<Product>> call = apiService.getProducts();
+        Log.d("api call", "in data ");
+        call.enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                Log.d("api called", "in response");
+                if (response.isSuccessful()) {
+                    try {
+                        ArrayList<Product> products = (ArrayList<Product>) response.body();
+                        adapter.setProducts(products);
+                        adapter.notifyDataSetChanged();
+                        for (Product product : products) {
+                            Log.d("Product Name", product.getProductName());
+                            Log.d("Product Price", product.getProductPrice());
+                            Log.d("Product Image", product.getImage());
+                        }
+                    } catch (Exception ex) {
+                        Log.e("ApiClient", "Error parsing response: " + ex.getMessage());
+                    }
+                } else {
+                    Log.e("ApiClient", "Response not successful. Code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Log.e("on failure", "Error fetching products: " + t.toString());
             }
         });
     }
