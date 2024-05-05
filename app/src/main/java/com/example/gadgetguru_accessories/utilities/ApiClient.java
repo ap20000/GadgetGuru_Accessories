@@ -24,9 +24,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-//    private static final String BASE_URL = "http://192.168.1.142/api/";
+    private static final String BASE_URL = "http://192.168.1.142/api/";
 
-    private static final String BASE_URL = "http://100.64.215.72/api/";
+//    private static final String BASE_URL = "http://100.64.215.72/api/";
 //    private static final String BASE_URL = "http://100.64.201.80/api/";
 
     private static Retrofit retrofit;
@@ -170,34 +170,22 @@ public class ApiClient {
 //        });
 //    }
 
-    public void getProducts(PostAdapter adapter) {
-        Call<List<Product>> call = apiService.getProducts();
-        Log.d("api call", "in data ");
+    public void getProducts(ApiCallback callback) {
+        Call<List<Product>> call = createApiService().getProducts();
         call.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                Log.d("api called", "in response");
                 if (response.isSuccessful()) {
-                    try {
-                        ArrayList<Product> products = (ArrayList<Product>) response.body();
-                        adapter.setProducts(products);
-                        adapter.notifyDataSetChanged();
-                        for (Product product : products) {
-                            Log.d("Product Name", product.getProductName());
-                            Log.d("Product Price", product.getProductPrice());
-                            Log.d("Product Image", product.getImage());
-                        }
-                    } catch (Exception ex) {
-                        Log.e("ApiClient", "Error parsing response: " + ex.getMessage());
-                    }
+                    ArrayList<Product> products = new ArrayList<>(response.body());
+                    callback.onSuccess(products);
                 } else {
-                    Log.e("ApiClient", "Response not successful. Code: " + response.code());
+                    callback.onFailure("Failed to get products. Response code: " + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
-                Log.e("on failure", "Error fetching products: " + t.toString());
+                callback.onFailure("Failed to get products: " + t.getMessage());
             }
         });
     }

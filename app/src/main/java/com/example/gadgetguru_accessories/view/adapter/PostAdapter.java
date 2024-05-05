@@ -12,29 +12,22 @@ import com.example.gadgetguru_accessories.model.Product;
 import com.example.gadgetguru_accessories.view.viewHolder.ProductDetails;
 import com.squareup.picasso.Picasso;
 
-
 import java.util.ArrayList;
 
 public class PostAdapter extends RecyclerView.Adapter<ProductDetails> {
 
     private ArrayList<Product> products;
 
-    public PostAdapter() {
-        this.products = new ArrayList<>();
-    }
-
-
-
-    public void setProducts(ArrayList<Product> products) {
+    public PostAdapter(ArrayList<Product> products) {
         this.products = products;
     }
+
     @NonNull
     @Override
     public ProductDetails onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_product, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_holder, parent, false);
         return new ProductDetails(view);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull ProductDetails holder, int position) {
