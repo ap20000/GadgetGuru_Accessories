@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    private static final String BASE_URL = "http://192.168.1.142/api/";
+    private static final String BASE_URL = "http://192.168.1.110/api/";
 
 //    private static final String BASE_URL = "http://100.64.215.72/api/";
 //    private static final String BASE_URL = "http://100.64.201.80/api/";

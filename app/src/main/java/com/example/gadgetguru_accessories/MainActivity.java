@@ -1,46 +1,57 @@
 package com.example.gadgetguru_accessories;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gadgetguru_accessories.model.Product;
-import com.example.gadgetguru_accessories.utilities.ApiCallback;
-import com.example.gadgetguru_accessories.utilities.ApiClient;
-import com.example.gadgetguru_accessories.view.adapter.PostAdapter;
+import com.example.gadgetguru_accessories.view.viewHolder.HomeProduct;
 
-import java.util.ArrayList;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Product> products = new ArrayList<>();
-    private PostAdapter adapter;
+
+    BottomNavigationView bottomNavigationView;
+//    HomeProduct homeFragment = new HomeProduct();
+//    ProfileFragment profileFragment = new ProfileFragment();
+//    ProductDetails productDetails = new ProductDetails();
+//    HobbiesFragment hobbiesFragment = new HobbiesFragment();
+//    ContactFragment contactFragment = new ContactFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recycler_activity);
+        setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = findViewById(R.id.rvPosts);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new PostAdapter(products);
-        recyclerView.setAdapter(adapter);
-
-        ApiClient apiClient = new ApiClient();
-        apiClient.getProducts(new ApiCallback() {
-            @Override
-            public void onSuccess(ArrayList<Product> productList) {
-                products.clear();
-                products.addAll(productList);
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(String message) {
-                // Handle failure
-            }
-        });
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener((NavigationBarView.OnItemSelectedListener) this);
+        bottomNavigationView.setSelectedItemId(R.id.home);
     }
+
+
+//    @Override
+//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//        if (item.getItemId() == R.id.home){
+//            getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment).commit();
+//            return true;
+////        }else if(item.getItemId() == R.id.profile){
+////            getSupportFragmentManager().beginTransaction().replace(R.id.container, profileFragment).commit();
+////            return true;
+////        }else if(item.getItemId() == R.id.skill){
+////            getSupportFragmentManager().beginTransaction().replace(R.id.container, skillFragment).commit();
+////            return true;
+////        }else if(item.getItemId() == R.id.hobbies){
+////            getSupportFragmentManager().beginTransaction().replace(R.id.container, hobbiesFragment).commit();
+////            return true;
+////        }else if(item.getItemId() == R.id.contact) {
+////            getSupportFragmentManager().beginTransaction().replace(R.id.container, contactFragment).commit();
+////            return true;
+//        }else {
+//            return false;
+//        }
+//    }
 }
