@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "30578648810",
+    "project_id": "gadgetguru-accessories",
+    "storage_bucket": "gadgetguru-accessories.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30578648810:android:22eb360e259e43a89d1993",
+        "android_client_info": {
+          "package_name": "com.example.gadgetguru_accessories"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtqs6ckwec2CdfQ7s9ix3Pe6_25dBdj8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 package com.example.gadgetguru_accessories.view.viewHolder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -9,10 +10,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gadgetguru_accessories.R;
-
-import com.example.gadgetguru_accessories.model.User;
-import com.example.gadgetguru_accessories.model.LoginUser;
+import com.example.gadgetguru_accessories.utilities.ApiCallback;
 import com.example.gadgetguru_accessories.utilities.ApiClient;
+
+import com.example.gadgetguru_accessories.MainActivity;
+import com.example.gadgetguru_accessories.utilities.LoginApiCalBack;
+// Corrected interface name
 
 public class LoginPage extends AppCompatActivity {
     private EditText usernameEditText;
@@ -45,9 +48,4 @@ public class LoginPage extends AppCompatActivity {
         });
 
     }
-
-//    private void loginUser(loginUser user) {
-//        ApiClient.loginUser( this);
-//    }
-
 }

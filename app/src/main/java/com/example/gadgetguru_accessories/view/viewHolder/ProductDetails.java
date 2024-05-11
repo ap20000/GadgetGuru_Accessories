@@ -16,7 +16,7 @@ import com.example.gadgetguru_accessories.R;
 
 
 
-public class ProductDetails extends RecyclerView.ViewHolder {
+public class ProductDetails extends RecyclerView.ViewHolder  {
 
 
     public TextView textViewName;
