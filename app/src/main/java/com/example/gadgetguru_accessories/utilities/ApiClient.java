@@ -62,15 +62,15 @@ public class ApiClient {
                     // Registration successful
                     Intent intent = new Intent(context, LoginPage.class);
                     context.startActivity(intent);
-                    Log.d("ApiClient", "User registration successful");
-                    Toast.makeText(context, "User registered successfully", Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(context, "User has successfully registered.", Toast.LENGTH_SHORT).show();
                     // Optionally, you can navigate to another activity upon successful registration
                     // startActivity(new Intent(context, MainActivity.class));
                 } else {
                     Intent intent = new Intent(context, RegisterPage.class);
                     context.startActivity(intent);
                     // Registration failed
-                    Log.d("ApiClient", "Failed to register user. Response code: " + response.code());
+
                     Toast.makeText(context, "Failed to register user. Please try again later.", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -141,53 +141,7 @@ public class ApiClient {
         });
     }
 
-//    public static void contact(Contact contact) {
-//        ApiService apiService = createApiService();
-//        apiService.contactuser(contact).enqueue(new Callback<Object>() {
-//            @Override
-//            public void onResponse(Call<Object> call, Response<Object> response) {
-//                if (response.isSuccessful()) {
-////                    Toast.makeText(context, "Contact sent successfully", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Log.d("ApiClient", "Failed to send contact. Response code: " + response.code());
-////                    Toast.makeText(context, "Failed to send contact. Please try again later.", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Object> call, Throwable t) {
-//                Log.e("ApiClient", "Sending contact failed: " + t.getMessage());
-//                String errorMessage = t instanceof IOException ?
-//                        "Network error. Please check your internet connection." :
-//                        "Failed to send contact. Error: " + t.getMessage();
-////                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 
-//    public static void contactu(Contact contact, Context context) {
-//        ApiService apiService = createApiService();
-//        apiService.contact(contact).enqueue(new Callback<Object>() {
-//            @Override
-//            public void onResponse(Call<Object> call, Response<Object> response) {
-//                if (response.isSuccessful()) {
-//                    Toast.makeText(context, "Contact sent successfully", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Log.d("ApiClient", "Failed to send contact. Response code: " + response.code());
-//                    Toast.makeText(context, "Failed to send contact. Please try again later.", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Object> call, Throwable t) {
-//                Log.e("ApiClient", "Sending contact failed: " + t.getMessage());
-//                String errorMessage = t instanceof IOException ?
-//                        "Network error. Please check your internet connection." :
-//                        "Failed to send contact. Error: " + t.getMessage();
-//                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 
     public static void contactInfo(Contact contact, Context context) {
         // Get the ApiService instance
@@ -228,43 +182,7 @@ public class ApiClient {
         });
     }
 
-//    public static void getProducts(Context context) {
-//        // Get the ApiService instance
-//        ApiService apiService = createApiService();
-//
-//        // Call the getProducts method in ApiService
-//        apiService.getProducts().enqueue(new Callback<List<Product>>() {
-//            @Override
-//            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-//                if (response.isSuccessful()) {
-//                    List<Product> products = response.body();
-//                    // Display products in RecyclerView
-//                    // Assuming you have a method to set up RecyclerView and adapter
-//                    // For example, you can create a method in your activity or fragment
-//                    // and call it from here passing the products list
-//                    // setupRecyclerView(products);
-//                } else {
-//                    // Handle error
-//                    Log.d("ApiClient", "Failed to get products. Response code: " + response.code());
-//                    Toast.makeText(context, "Failed to get products. Please try again later.", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Product>> call, Throwable t) {
-//                // Handle network failure
-//                String errorMessage;
-//                if (t instanceof IOException) {
-//                    errorMessage = "Network error. Please check your internet connection.";
-//                } else {
-//                    errorMessage = "Failed to get products. Error: " + t.getMessage();
-//                }
-//                // Display error message to the user
-//                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
-//                Log.e("ApiClient", "Failed to get products: " + errorMessage);
-//            }
-//        });
-//    }
+
 
     public void getProducts(ApiCallback callback) {
         Call<List<Product>> call = createApiService().getProducts();
