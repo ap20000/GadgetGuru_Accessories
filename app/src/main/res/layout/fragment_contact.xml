@@ -1,14 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.viewHolder.Contact">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    tools:context=".view.viewHolder.ContactFragment">
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        android:background="@drawable/conatc_imag"-->
+<!--        android:layout_marginTop="60dp"></LinearLayout>-->
+
+    <LinearLayout
+        android:id="@+id/topNavBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/topText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Contact"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:paddingStart="120dp"
+            android:paddingEnd="120dp"
+            android:text="Get In Touch"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/fragment_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginEnd="80dp"
+                app:cardCornerRadius="20dp"
+                >
+
+                <EditText
+                    android:id="@+id/txtName"
+                    android:layout_width="250dp"
+                    android:layout_height="60dp"
+
+                    android:layout_marginTop="0dp"
+                    android:autofillHints="Name"
+                    android:background="@drawable/btn_background_1"
+                    android:fontFamily="sans-serif-black"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+
+                    android:hint="Name"
+                    android:textAlignment="viewStart"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="80dp"
+            app:cardCornerRadius="20dp"
+            >
+
+            <EditText
+                android:id="@+id/txtemail"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:autofillHints="Name"
+                android:fontFamily="sans-serif-black"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:background="@drawable/btn_background_1"
+                android:hint="Email"
+                android:textAlignment="viewStart"
+                />
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="80dp"
+            app:cardCornerRadius="20dp"
+            >
+
+            <EditText
+                android:id="@+id/txtmessage"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:autofillHints="Name"
+                android:background="@drawable/btn_background_1"
+                android:hint="Message"
+                android:fontFamily="sans-serif-black"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textAlignment="viewStart"
+                android:inputType="textPersonName" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:id="@+id/SendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="30dp"
+            android:autofillHints="Name"
+
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-black"
+            android:backgroundTint="@color/black"
+            android:textAlignment="viewStart" />
+
+
+
+
+
+
+
+    </LinearLayout>
+</LinearLayout>
+
+
+
+    </RelativeLayout>

@@ -46,7 +46,7 @@ public class MyFireBaeMessaging extends FirebaseMessagingService {
 
     private void showNotification(String title, String message) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.mipmap.logo)
+                .setSmallIcon(R.mipmap.splashscreen)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);

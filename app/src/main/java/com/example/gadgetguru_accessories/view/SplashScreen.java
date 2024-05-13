@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.gadgetguru_accessories.MainActivity;
 import com.example.gadgetguru_accessories.R;
 import com.example.gadgetguru_accessories.view.viewHolder.LoginPage;
+import com.example.gadgetguru_accessories.view.viewHolder.RegisterPage;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -25,7 +26,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent intent = new Intent(SplashScreen.this, LoginPage.class);
+                Intent intent = new Intent(SplashScreen.this, RegisterPage.class);
                 startActivity(intent);
 
 
