@@ -14,7 +14,7 @@ import com.example.gadgetguru_accessories.view.viewHolder.RegisterPage;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static final int SPLASH_TIMEOUT = 100;
+    private static final int SPLASH_TIMEOUT = 300;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent intent = new Intent(SplashScreen.this, RegisterPage.class);
+                Intent intent = new Intent(SplashScreen.this, LoginPage.class);
                 startActivity(intent);
 
 

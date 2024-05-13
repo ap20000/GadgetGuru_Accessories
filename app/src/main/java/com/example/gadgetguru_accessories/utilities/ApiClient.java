@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    private static final String BASE_URL = "http://100.64.222.27/api/";
+    private static final String BASE_URL = "http://192.168.137.176/api/";
 
 //    private static final String BASE_URL = "http://100.64.215.72/api/";
 //    private static final String BASE_URL = "http://100.64.201.80/api/";
@@ -49,12 +49,12 @@ public class ApiClient {
     }
 
     // Method to register a user
-    public static void registerUser(User user, Context context) {
+    public static void UsereaddRegister(User accessoriesuser, Context context) {
         // Get the ApiService instance
         ApiService apiService = createApiService();
 
-        // Call the registerUser method in ApiService and pass the user object
-        apiService.registerUser(user).enqueue(new Callback<Object>() {
+
+        apiService.UsereaddRegister(accessoriesuser).enqueue(new Callback<Object>() {
 
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
@@ -63,9 +63,8 @@ public class ApiClient {
                     Intent intent = new Intent(context, LoginPage.class);
                     context.startActivity(intent);
 
-                    Toast.makeText(context, "User has successfully registered.", Toast.LENGTH_SHORT).show();
-                    // Optionally, you can navigate to another activity upon successful registration
-                    // startActivity(new Intent(context, MainActivity.class));
+                    Toast.makeText(context, "User has successfully created an account.", Toast.LENGTH_SHORT).show();
+
                 } else {
                     Intent intent = new Intent(context, RegisterPage.class);
                     context.startActivity(intent);
@@ -93,14 +92,14 @@ public class ApiClient {
 
 
 
-    public static void loginUser(String username, String password, Context context) {
+    public static void loginGuruUser(String username, String password, Context context) {
         // Get the ApiService instance
         ApiService apiService = createApiService();
 
-        // Call the loginUser method in ApiService and pass the username and password as query parameters
+
 
         LoginUser user = new LoginUser(username, password);
-        apiService.loginUser(user).enqueue(new Callback<Object>() {
+        apiService.loginGuruUser(user).enqueue(new Callback<Object>() {
 
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
@@ -143,7 +142,7 @@ public class ApiClient {
 
 
 
-    public static void contactInfo(Contact contact, Context context) {
+    public static void contactDetails(Contact contact, Context context) {
         // Get the ApiService instance
         ApiService apiService = createApiService();
 
@@ -184,22 +183,22 @@ public class ApiClient {
 
 
 
-    public void getProducts(ApiCallback callback) {
-        Call<List<Product>> call = createApiService().getProducts();
+    public void getAccessories(ApiCallback callback) {
+        Call<List<Product>> call = createApiService().getAccessories();
         call.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 if (response.isSuccessful()) {
                     ArrayList<Product> products = new ArrayList<>(response.body());
-                    callback.onSuccess(products);
+                    callback.Success(products);
                 } else {
-                    callback.onFailure("Failed to get products. Response code: " + response.code());
+                    callback.Failure("Failed to get products. Response code: " + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
-                callback.onFailure("Failed to get products: " + t.getMessage());
+                callback.Failure("Failed to get products: " + t.getMessage());
             }
         });
     }

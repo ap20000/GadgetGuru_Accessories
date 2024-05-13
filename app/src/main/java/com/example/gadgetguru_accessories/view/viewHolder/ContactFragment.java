@@ -50,15 +50,15 @@ public class ContactFragment extends Fragment {
                 Log.d("ContactFra", "Full Name: " + fullName);
                 Log.d("ContactFragment", "Email: " + email);
                 Log.d("ContactFragment", "Message: " + message);
-                contactInfo(contact);
+                contactDetails(contact);
             }
         });
 
         return view;
     }
 
-    private void contactInfo(Contact contact) {
-        ApiClient.contactInfo(contact,getContext());
+    private void contactDetails(Contact contact) {
+        ApiClient.contactDetails(contact,getContext());
     }
 
 

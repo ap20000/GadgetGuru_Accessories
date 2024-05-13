@@ -14,7 +14,7 @@ import com.google.firebase.messaging.RemoteMessage;
 
 public class MyFireBaeMessaging extends FirebaseMessagingService {
     private static final String TAG="MyFireBaeMessaging";
-    private static final String CHANNEL_ID="notification";
+    private static final String CHANNEL_ID="alert";
 
 
     @Override
@@ -46,7 +46,7 @@ public class MyFireBaeMessaging extends FirebaseMessagingService {
 
     private void showNotification(String title, String message) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.mipmap.splashscreen)
+                .setSmallIcon(R.drawable.logo)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);

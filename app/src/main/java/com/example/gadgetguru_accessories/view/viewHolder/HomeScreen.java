@@ -36,16 +36,16 @@ public class HomeScreen extends Fragment {
 
         // Fetch data and update the adapter
         ApiClient apiClient = new ApiClient();
-        apiClient.getProducts(new ApiCallback() {
+        apiClient.getAccessories(new ApiCallback() {
             @Override
-            public void onSuccess(ArrayList<Product> productList) {
+            public void Success(ArrayList<Product> productList) {
                 products.clear();
                 products.addAll(productList);
                 adapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onFailure(String message) {
+            public void Failure(String message) {
                 // Handle failure
             }
         });

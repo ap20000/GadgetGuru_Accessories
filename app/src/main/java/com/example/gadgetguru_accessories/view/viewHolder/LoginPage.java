@@ -51,7 +51,7 @@ public class LoginPage extends AppCompatActivity {
                 Toast.makeText(LoginPage.this, "Username cannot contain symbols", Toast.LENGTH_SHORT).show();
             } else {
                 // Call loginUser method with username, password, and context
-                ApiClient.loginUser(username, password, LoginPage.this);
+                ApiClient.loginGuruUser(username, password, LoginPage.this);
             }
         });
 

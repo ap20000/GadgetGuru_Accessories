@@ -13,14 +13,14 @@ import com.example.gadgetguru_accessories.R;
 import com.example.gadgetguru_accessories.model.Product;
 import com.example.gadgetguru_accessories.utilities.ApiCallback;
 import com.example.gadgetguru_accessories.utilities.ApiClient;
-import com.example.gadgetguru_accessories.view.adapter.PostAdapter;
+import com.example.gadgetguru_accessories.view.adapter.AdapterPost;
 
 import java.util.ArrayList;
 
 public class ProductFragment extends Fragment {
 
-    private RecyclerView recyclerView;
-    private PostAdapter adapter;
+    private RecyclerView recyclerViewAccessories;
+    private AdapterPost adapter;
     private ArrayList<Product> products = new ArrayList<>();
 
     public ProductFragment() {
@@ -32,23 +32,23 @@ public class ProductFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_activity, container, false);
 
-        recyclerView = view.findViewById(R.id.rvPosts);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new PostAdapter(products);
-        recyclerView.setAdapter(adapter);
+        recyclerViewAccessories = view.findViewById(R.id.rvPosts);
+        recyclerViewAccessories.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new AdapterPost(products);
+        recyclerViewAccessories.setAdapter(adapter);
 
         // Fetch products from API
         ApiClient apiClient = new ApiClient();
-        apiClient.getProducts(new ApiCallback() {
+        apiClient.getAccessories(new ApiCallback() {
             @Override
-            public void onSuccess(ArrayList<Product> productList) {
+            public void Success(ArrayList<Product> accessoriesList) {
                 products.clear();
-                products.addAll(productList);
+                products.addAll(accessoriesList);
                 adapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onFailure(String message) {
+            public void Failure(String message) {
                 // Handle failure
             }
         });

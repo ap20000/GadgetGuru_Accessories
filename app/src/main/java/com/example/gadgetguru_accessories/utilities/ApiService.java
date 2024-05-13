@@ -18,21 +18,22 @@ import retrofit2.http.Path;
 
 public interface ApiService {
     @POST("user_login.php")
-    Call<Object> loginUser(@Body LoginUser password);
+    Call<Object> loginGuruUser(@Body LoginUser password);
 
 
     @POST("register.php")
-    Call<Object> registerUser(@Body User user);
+    Call<Object> UsereaddRegister(@Body User user);
 
     @POST("contact.php")
     Call<Object> Contact(@Body Contact contact);
 
 
     @GET("product.php")
-    Call<List<Product>> getProducts();
+    Call<List<Product>> getAccessories();
 
     @GET("user/{username}")
     Call<User> getUserDetails(@Path("username") String username);
+
 
 
 

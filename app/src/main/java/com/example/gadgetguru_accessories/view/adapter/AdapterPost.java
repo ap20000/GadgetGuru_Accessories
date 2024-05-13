@@ -14,11 +14,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class PostAdapter extends RecyclerView.Adapter<ProductDetails> {
+public class AdapterPost extends RecyclerView.Adapter<ProductDetails> {
 
     private ArrayList<Product> products;
 
-    public PostAdapter(ArrayList<Product> products) {
+    public AdapterPost(ArrayList<Product> products) {
         this.products = products;
     }
 

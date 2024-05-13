@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
-    BottomNavigationView bottomNavigationView;
+    BottomNavigationView NavigationView;
     HomeScreen homeFragment = new HomeScreen();
     ProfileFragment profileFragment = new ProfileFragment();
     ProductFragment productFragment = new ProductFragment();
@@ -31,32 +31,12 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_home_screen);
+
         setContentView(R.layout.activity_main);
-//        RecyclerView recyclerView = findViewById(R.id.rvPost);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-//        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//        recyclerView.setLayoutManager(layoutManager);
-//        adapter = new HomePostAdapter(products);
-//        recyclerView.setAdapter(adapter);
-//
-//        ApiClient apiClient = new ApiClient();
-//        apiClient.getProducts(new ApiCallback() {
-//            @Override
-//            public void onSuccess(ArrayList<Product> productList) {
-//                products.clear();
-//                products.addAll(productList);
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onFailure(String message) {
-//                // Handle failure
-//            }
-//        });
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        NavigationView = findViewById(R.id.NavigationView);
+        NavigationView.setOnItemSelectedListener(this);
+        NavigationView.setSelectedItemId(R.id.home);
     }
 
 

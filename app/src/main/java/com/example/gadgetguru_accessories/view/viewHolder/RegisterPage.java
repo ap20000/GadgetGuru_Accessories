@@ -65,15 +65,15 @@ public class RegisterPage extends AppCompatActivity {
             } else if (!isValidFull(fullName)) {
                 Toast.makeText(RegisterPage.this, "Full Name cannot contain number", Toast.LENGTH_SHORT).show();
             } else {
-                User user = new User(fullName, username, email, password);
-                System.out.println(user.getFullName());
-                registerUser(user);
+                User accessoriesuser = new User(fullName, username, email, password);
+                System.out.println(accessoriesuser.getFullName());
+                UsereaddRegister(accessoriesuser);
             }
         });
     }
 
-    private void registerUser(User user) {
-        ApiClient.registerUser(user, this);
+    private void UsereaddRegister(User accessoriesuser) {
+        ApiClient.UsereaddRegister(accessoriesuser, this);
     }
     private boolean isValidFullName(String fullName) {
         // Regular expression to check if full name contains only letters, spaces, and hyphens
